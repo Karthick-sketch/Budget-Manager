@@ -17,7 +17,8 @@ public class BudgetsController {
 
     @GetMapping("/dashboard")
     public Map<String, Double> getBudgetCalculation() {
-        Double expenses = budgetRepo.sumOfExpenses(), incomes = budgetRepo.sumOfIncomes();
+        Double expenses = budgetRepo.sumOfBudgetType("expense");
+        Double incomes = budgetRepo.sumOfBudgetType("income");
 
         Map<String, Double> budgetCalculation = new HashMap<>();
         budgetCalculation.put("expenses", expenses);
