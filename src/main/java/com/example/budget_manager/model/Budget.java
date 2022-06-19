@@ -62,4 +62,12 @@ public class Budget {
     public void setBudget_type(String budget_type) {
         this.budget_type = budget_type;
     }
+
+    public void setBudget(Budget budget) {
+        amount = budget.getAmount();
+        explanation = budget.getExplanation();
+        category = budget.getCategory();
+        budget_type = budget.getBudget_type();
+        date_added = budget.getDate_added();
+    }
 }

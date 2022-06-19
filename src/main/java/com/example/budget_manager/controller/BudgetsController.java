@@ -42,4 +42,25 @@ public class BudgetsController {
         budgetRepo.save(budget);
         return budget;
     }
+
+    @PatchMapping("/budget/{id}")
+    public boolean updateBudgetById(@PathVariable("id") int id, @RequestBody Budget newData) {
+        Budget budget = budgetRepo.findById(id).orElse(null);
+        if (budget != null) {
+            budget.setBudget(newData);
+            budgetRepo.save(budget);
+            return true;
+        }
+        return false;
+    }
+
+    @DeleteMapping("/budget/{id}")
+    public boolean deleteBudgetById(@PathVariable("id") int id) {
+        Budget budget = budgetRepo.findById(id).orElse(null);
+        if (budget != null) {
+            budgetRepo.delete(budget);
+            return true;
+        }
+        return false;
+    }
 }
