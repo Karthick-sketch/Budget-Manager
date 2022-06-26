@@ -1,13 +1,8 @@
-package com.example.budget_manager.model;
+package com.karthick.budget_manager.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.util.Date;
 
-@Entity(name = "budgets")
-public class Budget {
-    @Id @GeneratedValue
+public class BudgetDto {
     private int id;
     private double amount;
     private String explanation;
@@ -39,14 +34,6 @@ public class Budget {
         this.explanation = explanation;
     }
 
-    public Date getDate_added() {
-        return date_added;
-    }
-
-    public void setDate_added(Date date_added) {
-        this.date_added = date_added;
-    }
-
     public String getCategory() {
         return category;
     }
@@ -63,11 +50,11 @@ public class Budget {
         this.budget_type = budget_type;
     }
 
-    public void setBudget(Budget budget) {
-        amount = budget.getAmount();
-        explanation = budget.getExplanation();
-        category = budget.getCategory();
-        budget_type = budget.getBudget_type();
-        date_added = budget.getDate_added();
+    public Date getDate_added() {
+        return date_added;
+    }
+
+    public void setDate_added(Date date_added) {
+        this.date_added = date_added;
     }
 }

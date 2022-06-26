@@ -1,4 +1,4 @@
-package com.example.budget_manager;
+package com.karthick.budget_manager;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

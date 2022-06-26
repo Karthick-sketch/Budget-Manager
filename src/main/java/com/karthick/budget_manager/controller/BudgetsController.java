@@ -1,9 +1,9 @@
-package com.example.budget_manager.controller;
+package com.karthick.budget_manager.controller;
 
-import com.example.budget_manager.datarepo.BudgetRepository;
-import com.example.budget_manager.dto.BudgetDto;
-import com.example.budget_manager.model.Budget;
-import com.example.budget_manager.service.BudgetService;
+import com.karthick.budget_manager.datarepo.BudgetRepository;
+import com.karthick.budget_manager.dto.BudgetDto;
+import com.karthick.budget_manager.model.Budget;
+import com.karthick.budget_manager.service.BudgetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,14 +33,9 @@ public class BudgetsController {
         return budgetCalculation;
     }
 
-    @GetMapping("/budgets")
-    public List<BudgetDto> getBudgets() {
-        return budgetService.getAllBudgets();
-    }
-
-    @GetMapping("/budget/{id}")
-    public Optional<Budget> getBudgetById(@PathVariable("id") int id) {
-        return budgetRepo.findById(id);
+    @GetMapping("/budget/{user_id}")
+    public List<BudgetDto> getBudgetsByUserId(@PathVariable("user_id") int user_id) {
+        return budgetService.getBudgetsByUserId(user_id);
     }
 
     @PostMapping("/budget")
