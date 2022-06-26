@@ -1,12 +1,11 @@
 package com.karthick.budget_manager.controller;
 
 import com.karthick.budget_manager.datarepo.UserRepository;
+import com.karthick.budget_manager.dto.UserDto;
 import com.karthick.budget_manager.model.User;
+import com.karthick.budget_manager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
@@ -14,19 +13,17 @@ public class UsersController {
     @Autowired
     private UserRepository userRepo;
 
-    @GetMapping("/users")
-    public List<User> getUsers() {
-        return userRepo.findAll();
-    }
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/user/{id}")
-    public Optional<User> getUserById(@PathVariable("id") int id) {
-        return userRepo.findById(id);
+    public UserDto getUserById(@PathVariable("id") int id) {
+        return userService.getUserById(id);
     }
 
     @GetMapping("/user/signin/{email}")
-    public Optional<User> getUserByEmail(@PathVariable("email") String email) {
-        return userRepo.findByEmail(email);
+    public UserDto getUserByEmail(@PathVariable("email") String email) {
+        return userService.getUserByEmail(email);
     }
 
     @PostMapping("/user")
