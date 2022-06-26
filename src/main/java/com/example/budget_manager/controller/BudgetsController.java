@@ -1,7 +1,9 @@
 package com.example.budget_manager.controller;
 
-import com.example.budget_manager.datarepo.BudgetRepo;
+import com.example.budget_manager.datarepo.BudgetRepository;
+import com.example.budget_manager.dto.BudgetDto;
 import com.example.budget_manager.model.Budget;
+import com.example.budget_manager.service.BudgetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +15,10 @@ import java.util.Optional;
 @RestController
 public class BudgetsController {
     @Autowired
-    BudgetRepo budgetRepo;
+    private BudgetRepository budgetRepo;
+
+    @Autowired
+    private BudgetService budgetService;
 
     @GetMapping("/dashboard")
     public Map<String, Double> getBudgetCalculation() {
@@ -29,8 +34,8 @@ public class BudgetsController {
     }
 
     @GetMapping("/budgets")
-    public List<Budget> getBudgets() {
-        return budgetRepo.findAll();
+    public List<BudgetDto> getBudgets() {
+        return budgetService.getAllBudgets();
     }
 
     @GetMapping("/budget/{id}")
